@@ -7,6 +7,8 @@ import "C"
 
 import (
 	"fmt"
+
+	_ "github.com/zhangjunMaster/golz4/src"
 )
 
 // CompressHC compresses in and puts the content in out. len(out)

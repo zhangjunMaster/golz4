@@ -9,6 +9,8 @@ import (
 	"errors"
 	"fmt"
 	"unsafe"
+
+	_ "github.com/zhangjunMaster/golz4/src"
 )
 
 // p gets a char pointer to the first byte of a []byte slice
@@ -26,7 +28,7 @@ func clen(s []byte) C.int {
 
 // Uncompress with a known output size. len(out) should be equal to
 // the length of the uncompressed out.
-func Uncompress(in, out []byte) (error) {
+func Uncompress(in, out []byte) error {
 	if int(C.LZ4_decompress_safe(p(in), p(out), clen(in), clen(out))) < 0 {
 		return errors.New("Malformed compression stream")
 	}
